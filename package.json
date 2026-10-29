@@ -20,6 +20,8 @@
     "doctor": "node scripts/doctor.js",
     "seed": "node scripts/seed.js",
     "mocks": "npm run start -w mock-services",
+    "gateway": "npm run start -w @edgegate/gateway",
+    "dev:gateway": "npm run dev -w @edgegate/gateway",
     "test": "vitest run",
     "test:watch": "vitest"
   },

@@ -1,0 +1,17 @@
+{
+    "name": "@edgegate/gateway",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "description": "EdgeGate data plane: routes, protects and observes client traffic",
+    "main": "./src/index.js",
+    "scripts": {
+      "start": "node src/index.js",
+      "dev": "node --watch src/index.js"
+    },
+    "dependencies": {
+      "@edgegate/shared": "*",
+      "express": "^4.21.2",
+      "undici": "^8.12.3"
+    }
+  }

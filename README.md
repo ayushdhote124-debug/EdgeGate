@@ -4,7 +4,7 @@ An API gateway that sits between clients and backend services: API key authentic
 
 **Stack:** Node.js, Express, Redis, MongoDB, OpenTelemetry, Next.js
 
-> Status: **Phase 1 of 8 complete** (foundation). See [Roadmap](#roadmap).
+> Status: **Phase 2 of 8 complete** (proxy core). See [Roadmap](#roadmap).
 
 ## Prerequisites
 
@@ -23,6 +23,8 @@ npm run mocks                   # fake backends (keep this terminal open)
 npm run doctor                  # in a new terminal: checks everything
 npm test
 ```
+npm run gateway                # in another terminal: EdgeGate on port 8080
+Invoke-RestMethod http://localhost:8080/orders/42
 
 On macOS/Linux use `cp .env.example .env`. To run MongoDB in Docker as well, use `npm run infra:up`.
 
@@ -67,7 +69,7 @@ Invoke-RestMethod -Method Post -Uri http://localhost:5001/__mock/mode -ContentTy
 ## Roadmap
 
 - [x] **Phase 1: Foundation** (monorepo, shared package, models, Docker Compose, mocks, seed, doctor)
-- [ ] Phase 2: Proxy core (routing, upstream proxy, timeouts)
+- [x] **Phase 2: Proxy core** (routing, streaming proxy, timeouts, request ids, access logs)
 - [ ] Phase 3: Auth and limits (API keys, token bucket rate limiter, quotas)
 - [ ] Phase 4: Resilience (circuit breaker, load balancing, health checks)
 - [ ] Phase 5: Admin API and hot reload
