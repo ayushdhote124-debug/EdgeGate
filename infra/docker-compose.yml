@@ -1,0 +1,35 @@
+# Local infrastructure for EdgeGate.
+# Phase 1: Redis + MongoDB. Later phases add the OTel Collector, Jaeger and Prometheus.
+name: edgegate
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: edgegate-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  mongo:
+    image: mongo:7
+    container_name: edgegate-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  redis-data:
+  mongo-data:

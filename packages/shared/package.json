@@ -1,0 +1,16 @@
+{
+    "name": "@edgegate/shared",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "main": "./src/index.js",
+    "exports": {
+      ".": "./src/index.js",
+      "./models": "./src/models/index.js"
+    },
+    "dependencies": {
+      "mongoose": "^8.16.0",
+      "pino": "^9.7.0",
+      "zod": "^4.6.7"
+    }
+  }

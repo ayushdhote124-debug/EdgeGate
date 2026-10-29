@@ -1,0 +1,35 @@
+{
+  "name": "edgegate",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EdgeGate: API gateway with auth, tenant quotas, distributed rate limiting, circuit breakers, load balancing and analytics",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "mock-services"
+  ],
+  "scripts": {
+    "infra:up": "docker compose -f infra/docker-compose.yml up -d",
+    "infra:up:redis": "docker compose -f infra/docker-compose.yml up -d redis",
+    "infra:down": "docker compose -f infra/docker-compose.yml down",
+    "infra:logs": "docker compose -f infra/docker-compose.yml logs -f",
+    "doctor": "node scripts/doctor.js",
+    "seed": "node scripts/seed.js",
+    "mocks": "npm run start -w mock-services",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@edgegate/shared": "*",
+    "bcryptjs": "^3.0.2",
+    "ioredis": "^5.6.1"
+  },
+  "devDependencies": {
+    "pino-pretty": "^13.0.0",
+        "vitest": "^5.0.5"
+  }
+}

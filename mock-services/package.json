@@ -1,0 +1,13 @@
+{
+    "name": "mock-services",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "description": "Fake backend services for EdgeGate demos, with normal/slow/fail modes",
+    "scripts": {
+      "start": "node src/index.js"
+    },
+    "dependencies": {
+      "express": "^4.21.2"
+    }
+  }
